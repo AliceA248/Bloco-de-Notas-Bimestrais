@@ -1,9 +1,12 @@
-import React, { useState } from "react";
-import { TodoForm } from "./TodoForm";
-import { Todo } from "./Todo";
+import React, { useState } from 'react';
+import { LancarNotaForm } from './LancarNota';
+import { TodoForm } from './TodoForm';
+import { Todo } from './Todo';
 
 export const TodoWrapper = () => {
   const [bimestres, setBimestres] = useState(Array.from({ length: 4 }, () => ({ todos: [] })));
+  const [showLancarNotaForm, setShowLancarNotaForm] = useState(false);
+  const [currentBimestreIndex, setCurrentBimestreIndex] = useState(null);
 
   const addTodo = (task, bimestreIndex) => {
     setBimestres((prevBimestres) => {
@@ -29,12 +32,39 @@ export const TodoWrapper = () => {
     });
   };
 
+  const handleShowLancarNotaForm = (bimestreIndex) => {
+    setCurrentBimestreIndex(bimestreIndex);
+    setShowLancarNotaForm(true);
+  };
+
+  const handleConfirmNota = ({ bimestre, materia, nota }) => {
+    addTodo(`${materia} - ${nota}`, currentBimestreIndex);
+    setShowLancarNotaForm(false);
+    setCurrentBimestreIndex(null);
+  };
+
+  const handleCloseLancarNotaForm = () => {
+    setShowLancarNotaForm(false);
+    setCurrentBimestreIndex(null);
+  };
+
+  const addTodoForm = (bimestreIndex) => {
+    setCurrentBimestreIndex(bimestreIndex);
+    setShowLancarNotaForm(true);
+  };
+
   return (
     <div className="TodoWrapper">
       <div className="BimestreList">
         {bimestres.map((bimestre, bimestreIndex) => (
           <div key={bimestreIndex} className={`Bimestre Bimestre-${bimestreIndex + 1}`}>
-            <h1>Bimestre {bimestreIndex + 1}</h1>
+            <div className='Bimestre-Topo'>
+              <h1>Bimestre {bimestreIndex + 1}</h1>
+              <button onClick={() => addTodoForm(bimestreIndex)} className="todo-btn">
+              Lançar Nota
+              </button>
+            </div>
+            
             <TodoForm addTodo={(task) => addTodo(task, bimestreIndex)} />
             <div className="TodoList">
               {bimestre.todos.map((todo, todoIndex) => (
@@ -50,6 +80,9 @@ export const TodoWrapper = () => {
           </div>
         ))}
       </div>
+      {showLancarNotaForm && (
+        <LancarNotaForm bimestre={currentBimestreIndex + 1} onConfirm={handleConfirmNota} onClose={handleCloseLancarNotaForm} />
+      )}
     </div>
   );
 };

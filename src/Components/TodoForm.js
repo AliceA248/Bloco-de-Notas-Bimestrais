@@ -22,13 +22,6 @@ export const TodoForm = ({ addTodo }) => {
       {showLancarNotaForm && (
         <LancarNotaForm bimestre={1} onConfirm={handleConfirmNota} onClose={handleCloseLancarNotaForm} />
       )}
-      <button onClick={handleShowLancarNotaForm} className="todo-btn">
-        Lançar Nota
-      </button>
-      {!showLancarNotaForm && (
-        <form className="TodoForm">
-        </form>
-      )}
     </div>
   );
 };

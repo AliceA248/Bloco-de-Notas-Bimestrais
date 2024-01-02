@@ -82,11 +82,10 @@ p {
   cursor: pointer;
   width: Fixed (183px);
   height: Fixed (37px);
-  top: 54px;
-  left: 934px;
   padding: 16px, 32px, 16px, 32px;
   border-radius: 12px;
   gap: 10px;
+
 
 }
 
@@ -172,9 +171,18 @@ p {
 .Bimestre {
   text-align: left;
   margin-top: 40px;
+  background-color:black;
+  width: 500px;
+
 }
 
 .Titulo {
   display: flex;
   margin-top: 30px;
 }
+
+.Bimestre-Topo {
+  display: flex;
+  justify-content: space-between;
+}
+
