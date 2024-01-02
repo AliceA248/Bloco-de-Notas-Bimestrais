@@ -1,10 +1,10 @@
 import React from 'react';
+import { TodoWrapper } from './Components/TodoWarapper';
 import './App.css';
-
 function App() {
   return (
     <div className="App">
-      <h1>Bloco de Notas Bimestrais</h1>
+      <TodoWrapper />
     </div>
   );
 }

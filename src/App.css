@@ -1,6 +1,180 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+  font-family: 'Poppins', sans-serif;
   margin: 0;
- 
-  background-color: black;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.App {
+  text-align: center;
+}
+
+h1 {
+  color: #fff;
+  font-family: Montserrat;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 0em;
+  text-align: left;
+
+}
+
+
+p {
+  color: #fff;
+  font-family: Montserrat;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 0em;
+  text-align: left;
+
+}
+
+.TodoWrapper {
+  background:black;
+  width: 800px;
+  height: 800px;
+  margin-top: 5rem;
+  padding: 2rem;
+  border-radius: 5px;
+  display: flex;
+  gap: 20px;
+  flex-direction: row;
+}
+
+.TodoForm {
+  width: 100%;
+  margin-bottom: 1rem;
+  margin-top: 10px;
+}
+
+.todo-input {
+  outline: none;
+  background: none;
+  border: 1px solid #8758ff;
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  width: 300px;
+  color: #fff;
+}
+
+.todo-input::placeholder {
+  color: #ffffff4d;
+}
+
+.todo-btn {
+  background: yellow;
+  color: black;
+  border: none;
+  padding: 0.55rem;
+  cursor: pointer;
+  width: Fixed (183px);
+  height: Fixed (37px);
+  top: 54px;
+  left: 934px;
+  padding: 16px, 32px, 16px, 32px;
+  border-radius: 12px;
+  gap: 10px;
+
+}
+
+.Todo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  padding: 0.75rem 1rem;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+.pink {
+  background: #ff6b6b;
+  width: 158px;
+  height: 146px;
+  top: 121.5px;
+  left: 265px;
+
+}
+
+.blue {
+  background: #6ba0ff;
+}
+
+.orange {
+  background: #ffb86b;
+}
+
+.purple {
+  background: #b86bff;
+}
+
+.fa-trash {
+  margin-left: 0.75rem;
+}
+
+.incompleted {
+  color: #fff;
+  cursor: pointer;
+}
+
+.completed {
+  color: #c5aeff;
+  text-decoration: line-through;
+  cursor: pointer;
+}
+
+.edit-icon,
+.delete-icon {
+  cursor: pointer;
+}
+
+.TodoList {
+  display: flex;
+  gap: 10px;
+}
+
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.LancarNotaForm {
+  background: #0f0f0f;
   color: white;
+  width: 600px;
+  height: 300px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.Bimestre {
+  text-align: left;
+  margin-top: 40px;
+}
+
+.Titulo {
+  display: flex;
+  margin-top: 30px;
 }
