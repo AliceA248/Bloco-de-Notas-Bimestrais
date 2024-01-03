@@ -18,10 +18,10 @@ export const LancarNotaForm = ({ bimestre, onConfirm, onClose }) => {
         <h2>Bimestre {bimestre}</h2>
         <label htmlFor="materia">Matéria:</label>
         <select id="materia" value={materia} onChange={(e) => setMateria(e.target.value)}>
-          <option value="biologia">Biologia</option>
-          <option value="matematica">Matemática</option>
-          <option value="portugues">Português</option>
-          <option value="fisica">Física</option>
+          <option value="Biologia">Biologia</option>
+          <option value="Artes">Artes</option>
+          <option value="Geografia">Geografia</option>
+          <option value="Sociologia">Sociologia</option>
         </select>
         <label htmlFor="nota">Nota:</label>
         <input type="text" id="nota" value={nota} onChange={(e) => setNota(e.target.value)} />

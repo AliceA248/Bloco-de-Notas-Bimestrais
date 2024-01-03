@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { LancarNotaForm } from './LancarNota';
 import { TodoForm } from './TodoForm';
-import { Todo } from './Todo';
+import Vector from "../img/Vector.svg"
+import Chart from "../img/Chart.svg"
+
 
 export const TodoWrapper = () => {
   const [bimestres, setBimestres] = useState(Array.from({ length: 4 }, () => ({ todos: [] })));
@@ -74,12 +76,18 @@ export const TodoWrapper = () => {
             <div className="TodoList">
               {bimestre.todos.map((todo, todoIndex) => (
                 <div key={todo.id} className={`Todo pink ${todo.completed ? 'completed' : 'incompleted'}`}>
-                  <p className='materia'>{todo.materia}</p>
-                  <p className='nota'> Nota {todo.nota}</p>
+                  <div className='materia'>{todo.materia}
+                    <div onClick={() => deleteTodo(bimestreIndex, todoIndex)} className="delete-icon">
+                    <img src={Vector} alt="Vector" className="vector" />
+                    </div>
+                  </div>
+                  
+                  <div className='nota'>
+                    <img src={Chart} alt="Chart" className="chart" />
+                    <div className="valor"> Nota: {todo.nota}
+                  </div>
+                  </div>
                   <div>
-                    <button onClick={() => deleteTodo(bimestreIndex, todoIndex)} className="delete-icon">
-                      Excluir
-                    </button>
                     
                   </div>
                 </div>
