@@ -13,15 +13,18 @@ export const TodoWrapper = () => {
   const addTodo = (materia, nota, bimestreIndex) => {
     setBimestres((prevBimestres) => {
       const newBimestres = [...prevBimestres];
-      newBimestres[bimestreIndex].todos.push({
+      const newTodo = {
         id: new Date().getTime(),
         materia,
         nota,
         completed: false,
-      });
+        createdAt: new Date().toLocaleDateString(),
+      };
+      newBimestres[bimestreIndex].todos.push(newTodo);
       return newBimestres;
     });
   };
+  
 
   const deleteTodo = (bimestreIndex, todoIndex) => {
     setBimestres((prevBimestres) => {
@@ -80,7 +83,9 @@ export const TodoWrapper = () => {
                     <div onClick={() => deleteTodo(bimestreIndex, todoIndex)} className="delete-icon">
                     <img src={Vector} alt="Vector" className="vector" />
                     </div>
+                    
                   </div>
+                  <div className='data'>{todo.createdAt}</div>
                   
                   <div className='nota'>
                     <img src={Chart} alt="Chart" className="chart" />
