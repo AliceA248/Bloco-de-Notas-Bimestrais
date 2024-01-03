@@ -8,10 +8,15 @@ export const TodoWrapper = () => {
   const [showLancarNotaForm, setShowLancarNotaForm] = useState(false);
   const [currentBimestreIndex, setCurrentBimestreIndex] = useState(null);
 
-  const addTodo = (task, bimestreIndex) => {
+  const addTodo = (materia, nota, bimestreIndex) => {
     setBimestres((prevBimestres) => {
       const newBimestres = [...prevBimestres];
-      newBimestres[bimestreIndex].todos.push({ id: new Date().getTime(), task, completed: false });
+      newBimestres[bimestreIndex].todos.push({
+        id: new Date().getTime(),
+        materia,
+        nota,
+        completed: false,
+      });
       return newBimestres;
     });
   };
@@ -37,8 +42,8 @@ export const TodoWrapper = () => {
     setShowLancarNotaForm(true);
   };
 
-  const handleConfirmNota = ({ bimestre, materia, nota }) => {
-    addTodo(`${materia} - ${nota}`, currentBimestreIndex);
+  const handleConfirmNota = ({ materia, nota }) => {
+    addTodo(materia, nota, currentBimestreIndex);
     setShowLancarNotaForm(false);
     setCurrentBimestreIndex(null);
   };
@@ -61,20 +66,23 @@ export const TodoWrapper = () => {
             <div className='Bimestre-Topo'>
               <h1>Bimestre {bimestreIndex + 1}</h1>
               <button onClick={() => addTodoForm(bimestreIndex)} className="todo-btn">
-              Lançar Nota
+                Lançar Nota
               </button>
             </div>
-            
-            <TodoForm addTodo={(task) => addTodo(task, bimestreIndex)} />
+
+            <TodoForm addTodo={(materia, nota) => addTodo(materia, nota, bimestreIndex)} />
             <div className="TodoList">
               {bimestre.todos.map((todo, todoIndex) => (
-                <Todo
-                  key={todo.id}
-                  task={todo}
-                  deleteTodo={() => deleteTodo(bimestreIndex, todoIndex)}
-                  toggleComplete={() => toggleComplete(bimestreIndex, todoIndex)}
-                  colorClass={todoIndex % 4 === 0 ? "pink" : todoIndex % 4 === 1 ? "blue" : todoIndex % 4 === 2 ? "orange" : "purple"}
-                />
+                <div key={todo.id} className={`Todo pink ${todo.completed ? 'completed' : 'incompleted'}`}>
+                  <p className='materia'>{todo.materia}</p>
+                  <p className='nota'> Nota {todo.nota}</p>
+                  <div>
+                    <button onClick={() => deleteTodo(bimestreIndex, todoIndex)} className="delete-icon">
+                      Excluir
+                    </button>
+                    
+                  </div>
+                </div>
               ))}
             </div>
           </div>
